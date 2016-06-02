@@ -1,0 +1,14 @@
+
+
+<% @cocktails.each do |cocktail| %>
+  <h2><%= cocktail.name %></h2>
+  <p>Name: <%= cocktail.address %></p>
+  <p>Ingredient: <%= cocktail.phone_number %></p>
+  <%= link_to "Edit", edit_cocktail_path(cocktail) %>
+  <%= link_to "Show", cocktail_path(cocktail) %>
+  <%= link_to "Delete", cocktail_path(cocktail),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>
+<% end %>
+
+<h2> <%= link_to "New cocktail", new_cocktail_path %> </h2>
