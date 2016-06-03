@@ -1,8 +1,24 @@
 
 
-<h2><%= @restaurant.name %></h2>
-<p>Address: <%= @restaurant.address %></p>
-<p>Phone number: <%= @restaurant.phone_number %></p>
-<p>Catgeory: <%= @restaurant.category %></p>
+<h2><%= @cocktail.name %></h2>
+<p>_________________________________________</p>
 
-<%= link_to "List of all restaurants", restaurants_path %>
+<% @cocktail.doses.each do |dose| %>
+<strong><p>Dose</p></strong>
+<p>Description: <%= dose.description %></p>
+<p>Ingredient: <%= dose.ingredient[:name] %></p>
+<% end  %>
+<p>_________________________________________</p>
+
+<h3>Add a dose </h4>
+<%= form_for [@cocktail, @dose] do |f| %>
+  <h4>Description: </h4>
+  <%= f.text_field :description %>
+  <h4>Ingredient: </h4>
+  <%= f.collection_select :ingredient_id, Ingredient.all, :id, :name  %>
+<h4> </h4>
+  <%= f.submit "add dose" %>
+<% end %>
+<p>_________________________________________</p>
+
+<h3> <%= link_to "List of all cocktails", cocktails_path %> </h3>

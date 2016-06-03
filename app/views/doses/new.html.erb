@@ -1,5 +1,9 @@
 
-<%= form_for [@restaurant, @review] do |f| %>
-  <%= f.text_field :content %>
-  <%= f.submit "add a review" %>
+<h4>Description: </h4>
+<%= form_for [@cocktail, @dose] do |f| %>
+  <%= f.text_field :description %>
+  <h4>Ingredient: </h4>
+  <%= f.collection_select :ingredient_id, Ingredient.all, :id, :name  %>
+<h4> </h4>
+  <%= f.submit "add a dose" %>
 <% end %>
